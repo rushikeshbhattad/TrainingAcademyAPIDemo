@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingAcademyAPIDemo", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingModule", "TrainingModule\TrainingModule.csproj", "{DAC78BBB-D39A-40B0-8B96-317F2847FFE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingProject", "TrainingProject\TrainingProject.csproj", "{70835284-B570-4419-A4BF-430F6C5B1506}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingModel", "TrainingProject\TrainingModel.csproj", "{70835284-B570-4419-A4BF-430F6C5B1506}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
