@@ -39,8 +39,13 @@ namespace TrainingModule
             string query = "Select * from StudentDetails";
             cmd = new SqlCommand(query, con);
             dr = cmd.ExecuteReader();
-            Console.WriteLine("Student_Rollno\t StudentName\t Address\t Gender \t Contact_No \t Course_Name \t Course_Fee \t Trainer_Name \t Student_Marks");
-            
+            Console.WriteLine("Student_Rollno\t\t\t\t\t\t ||||||||||||StudentName\t\t\t\t\t\t |||||||||Address\t\t\t\t\t Gender \t\t\t Contact_No \t\t\t\t\t\t Course_Name \t\t\t\t\t\t Course_Fee \t\t\t\t\t\t Trainer_Name \t\t\t\t\t\t Student_Marks");
+           
+
+
+
+
+
             while (dr.Read())
             {
                 Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], dr[7], dr[8]);
@@ -54,13 +59,15 @@ namespace TrainingModule
             Console.ReadKey();
             con.Close();
         }
-        public static void UpdateData(int x)
+        public static void UpdateData(int x,int y)
         {
             con.Open();
-            string query = "Update StudentDetails Set Student_Marks ='70' where Student_Rollno=@rn";
+            
+            string query = "Update StudentDetails Set Student_Marks =@marks where Student_Rollno=@rn";
             cmd = new SqlCommand(query, con);
             cmd.Parameters.Add(new SqlParameter("rn",x));
-           
+            cmd.Parameters.Add(new SqlParameter("marks", y));
+
             int r = cmd.ExecuteNonQuery();
             Console.WriteLine("{0} rows affected", r);
             con.Close();

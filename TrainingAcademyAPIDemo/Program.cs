@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using TrainingModule;
 
 namespace TrainingAcademyAPIDemo
@@ -55,31 +56,126 @@ namespace TrainingAcademyAPIDemo
                         Console.WriteLine("--------------Insert Student Details--------------");
                         Console.WriteLine("Enter the Rollno");
                         Student_Rollno = Convert.ToInt32(Console.ReadLine());
-
+                        
+                         
                         Console.WriteLine("enter the StudentName");
                         StudentName = Console.ReadLine();
 
-                        Console.WriteLine("enter the Address");
-                        Address1 = Console.ReadLine();
+                            while (String.IsNullOrEmpty(StudentName))
+                            {
+                                Console.WriteLine("please enter the student name it cannot be blank");
+                                Console.WriteLine("Enter the student name again");
+                                StudentName = Console.ReadLine();
+                            }
+                                
+                         Console.WriteLine("enter the Address");
+                         Address1 = Console.ReadLine();
 
+                        while (String.IsNullOrEmpty(Address1))
+                        {
+                            Console.WriteLine("please enter the Address name it cannot be blank");
+                            Console.WriteLine("Enter the Address  again");
+                            Address1 = Console.ReadLine();
+                        }
+
+                        
                         Console.WriteLine("enter the Gender");
                         Gender = Console.ReadLine();
+
+                        while (String.IsNullOrEmpty(Gender))
+                        {
+                            Console.WriteLine("please enter the Gender it cannot be blank");
+                            Console.WriteLine("Enter the Gender  again");
+                            Gender = Console.ReadLine();
+                        }
+
 
                         Console.WriteLine("enter the ContactNo");
                         Contact_No = Console.ReadLine();
 
+                        while (true)
+                        {
+                            Console.Write("Enter Contact number : ");
+                           long Cno = Convert.ToInt64(Console.ReadLine());
+                            bool check = isValidContactNumber(Cno);
+
+
+                            if (check == true)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Length of Contact number must be 10!!!");
+                                continue;
+                            }
+
+                        }
+
+                         bool isValidContactNumber(long inputContactNumber)
+                        {
+                            string strRegex = @"(^[0-9]{10}$)|(^\+[0-9]{2}\s+[0-9] {2}[0-9]{8}$)|(^[0-9]{3}-[0-9]{4}-[0-9]{4}$)";
+
+
+                            Regex re = new Regex(strRegex);
+
+
+                            if (re.IsMatch(Convert.ToString(inputContactNumber)))
+                            {
+                                return (true);
+                            }
+
+                            else
+                            {
+                                return (false);
+                            }
+
+                        }
+
+
+
+
+
+
                         Console.WriteLine("enter the CourseName");
                         Course_Name = Console.ReadLine();
+
+                        while (String.IsNullOrEmpty(Course_Name))
+                        {
+                            Console.WriteLine("please enter the Course_Name it cannot be blank");
+                            Console.WriteLine("Enter the Course_Name again");
+                            Course_Name = Console.ReadLine();
+                        }
+
 
                         Console.WriteLine("enter the Course_Fee");
                         Course_Fee = Console.ReadLine();
 
+                        while (String.IsNullOrEmpty(Course_Fee))
+                        {
+                            Console.WriteLine("please enter the Course_Fee it cannot be blank");
+                            Console.WriteLine("Enter the Course_Fee again");
+                            Course_Fee = Console.ReadLine();
+                        }
+
+                        
                         Console.WriteLine("enter the TrainerName");
                         Trainer_Name = Console.ReadLine();
+
+                        while (String.IsNullOrEmpty(Trainer_Name))
+                        {
+                            Console.WriteLine("please enter the Trainer_Name it cannot be blank");
+                            Console.WriteLine("Enter the Trainer_Name again");
+                            Trainer_Name = Console.ReadLine();
+                        }
 
                         Console.WriteLine("Enter the Marks out of 50");
                         Student_Marks = Convert.ToInt32(Console.ReadLine());
 
+
+
+                        
+                        
                         Connection1.InsertData(Student_Rollno, StudentName, Address1, Gender, Contact_No, Course_Name, Course_Fee, Trainer_Name, Student_Marks);
                         break;
 
@@ -87,7 +183,9 @@ namespace TrainingAcademyAPIDemo
                         Console.WriteLine("--------Update Details--------------");
                         Console.WriteLine("enter rollno");
                         rollno = Convert.ToInt32(Console.ReadLine());
-                        Connection1.UpdateData(rollno);
+                        Console.WriteLine("Enter the new Marks");
+                        int marks = Convert.ToInt32(Console.ReadLine());
+                        Connection1.UpdateData(rollno,marks);
                         break;
 
                     case 4:
@@ -111,6 +209,8 @@ namespace TrainingAcademyAPIDemo
 
 
                     case 7:
+                        Console.WriteLine("Exiting From Application");
+                        Environment.Exit(0);
                         break;
 
                     default:
