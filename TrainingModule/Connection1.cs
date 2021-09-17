@@ -12,7 +12,7 @@ namespace TrainingModule
 
         public static void CreateConnection()
         {
-            string constr = "Data Source = DESKTOP-ECNJ0P3\\SQLEXPRESS; Initial Catalog=Training_Academy; Integrated Security=true; User ID=sa; Password=pass@123";
+            string constr = "Data Source = DESKTOP-ECNJ0P3\\SQLEXPRESS; Initial Catalog=Training_Academy;user =sa; Password=pass@123";
 
             con = new SqlConnection();
             con.ConnectionString = constr;
@@ -24,7 +24,7 @@ namespace TrainingModule
             con.Open();
             
 
-            string query = "insert into StudentDetails ( Student_Rollno, StudentName, Address1, Gender,Contact_No,  Course_Name, Course_Fee, Trainer_Name, Student_Marks)values (" + Student_Rollno + "," + StudentName + "," + Address1 + "," + Gender + "," + Contact_No + "," + Course_Name + "," + Course_Fee + "," + Trainer_Name +" ," +  Student_Marks +",)";
+            string query = "insert into StudentDetails (Student_Rollno, StudentName, Address1,Gender,Contact_No, Course_Name, Course_Fee, Trainer_Name, Student_Marks) values (" + Student_Rollno + ",'" + StudentName + "','" + Address1 + "','" + Gender + "','" + Contact_No + "','" + Course_Name + "','" + Course_Fee + "','" + Trainer_Name +"'," +  Student_Marks +")";
             cmd = new SqlCommand(query, con);
 
             int r = cmd.ExecuteNonQuery();
@@ -39,11 +39,12 @@ namespace TrainingModule
             string query = "Select * from StudentDetails";
             cmd = new SqlCommand(query, con);
             dr = cmd.ExecuteReader();
-            Console.WriteLine("Student_Rollno \t StudentName \t Address \t Gender \t Contact_No \t Course_Name \t Course_Fee \t Trainer_Name \t Student_Marks ");
+            Console.WriteLine("Student_Rollno\t StudentName\t Address\t Gender \t Contact_No \t Course_Name \t Course_Fee \t Trainer_Name \t Student_Marks");
+            
             while (dr.Read())
             {
                 Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], dr[7], dr[8]);
-
+                
             }
             dr.Close();
             string cmdcount = "Select count(*) from StudentDetails ";
@@ -53,24 +54,24 @@ namespace TrainingModule
             Console.ReadKey();
             con.Close();
         }
-        public static void UpdateData()
+        public static void UpdateData(int x)
         {
             con.Open();
-            string query = "Update StudentDetails Set Student_Marks ='70'";
+            string query = "Update StudentDetails Set Student_Marks ='70' where Student_Rollno=@rn";
             cmd = new SqlCommand(query, con);
-            cmd.Parameters.Add(new SqlParameter());
-            cmd.Parameters.Add(new SqlParameter());
+            cmd.Parameters.Add(new SqlParameter("rn",x));
+           
             int r = cmd.ExecuteNonQuery();
             Console.WriteLine("{0} rows affected", r);
             con.Close();
 
         }
-        public static void DeleteData(int Student_Rollno)
+        public static void DeleteData(int y)
         {
             con.Open();
-            string query = "Delete from StudentDetails Where Student_Rollno='Student_Rollno'";
+            string query = "Delete from StudentDetails Where Student_Rollno=@rn";
             cmd = new SqlCommand(query, con);
-            cmd.Parameters.Add(new SqlParameter());
+            cmd.Parameters.Add(new SqlParameter("rn",y));
             int r = cmd.ExecuteNonQuery();
 
             Console.WriteLine("{0} rows affected", r);
@@ -111,11 +112,6 @@ namespace TrainingModule
 
             }
             dr.Close();
-            string cmdcount = "Select count(*) from StudentDetails ";
-            cmd = new SqlCommand(cmdcount, con);
-            int count = (int)cmd.ExecuteScalar();
-            Console.WriteLine("{0} Records in the table", count);
-            Console.ReadKey();
             con.Close();
         }
     }
