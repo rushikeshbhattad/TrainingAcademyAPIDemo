@@ -24,6 +24,8 @@ namespace TrainingAcademyAPIDemo
             int rollno;
             Connection1.CreateConnection();
             Console.WriteLine("Connection with database Successful");
+            Console.WriteLine("Training_Academy");
+            Console.WriteLine();
             Console.ReadKey();
 
 
@@ -44,12 +46,13 @@ namespace TrainingAcademyAPIDemo
                 switch (ch)
                 {
                     case 1:
-                        Console.WriteLine("Display Data");
+                        Console.WriteLine("------------Display the Details----------------");
                         Connection1.DisplayData();
                         break;
 
                     case 2:
                         Console.WriteLine("Enter your Details");
+                        Console.WriteLine("--------------Insert Student Details--------------");
                         Console.WriteLine("Enter the Rollno");
                         Student_Rollno = Convert.ToInt32(Console.ReadLine());
 
@@ -74,30 +77,34 @@ namespace TrainingAcademyAPIDemo
                         Console.WriteLine("enter the TrainerName");
                         Trainer_Name = Console.ReadLine();
 
-                        Console.WriteLine("Enter the Marks");
+                        Console.WriteLine("Enter the Marks out of 50");
                         Student_Marks = Convert.ToInt32(Console.ReadLine());
 
                         Connection1.InsertData(Student_Rollno, StudentName, Address1, Gender, Contact_No, Course_Name, Course_Fee, Trainer_Name, Student_Marks);
                         break;
 
                     case 3:
+                        Console.WriteLine("--------Update Details--------------");
                         Console.WriteLine("enter rollno");
                         rollno = Convert.ToInt32(Console.ReadLine());
                         Connection1.UpdateData(rollno);
                         break;
 
                     case 4:
+                        Console.WriteLine("--------Delete Student Rollno--------------");
                         Console.WriteLine("Enter the Rollno you want to delete");
                         Student_Rollno = Convert.ToInt32(Console.ReadLine());
                         Connection1.DeleteData(Student_Rollno);
                         break;
 
                     case 5:
+                        Console.WriteLine("-----------Display Top 5--------------");
                         Console.WriteLine("Display Top5 StudentData");
                         Connection1.DisplayTop5();
                         break;
 
                     case 6:
+                        Console.WriteLine("-----------Display Top Student Trainer and Course_Name--------------");
                         Console.WriteLine("Top Student Trainer and Course_Name");
                         Connection1.DisplayAverage();
                         break;
