@@ -54,8 +54,11 @@ namespace TrainingAcademyAPIDemo
                     case 2:
                         Console.WriteLine("Enter your Details");
                         Console.WriteLine("--------------Insert Student Details--------------");
+                        
                         Console.WriteLine("Enter the Rollno");
                         Student_Rollno = Convert.ToInt32(Console.ReadLine());
+
+
                         
                          
                         Console.WriteLine("enter the StudentName");

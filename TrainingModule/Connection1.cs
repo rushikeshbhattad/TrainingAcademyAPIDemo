@@ -112,12 +112,13 @@ namespace TrainingModule
             string query = "SELECT Top 5 * From StudentDetails ORDER BY Student_Marks DESC ";
             cmd = new SqlCommand(query, con);
             dr = cmd.ExecuteReader();
-            Console.WriteLine(" \t Course_Name \t Trainer_Name ");
+            Console.Write("Course Name | Trainer Name | Marks \n");
             while (dr.Read())
             {
-                Console.WriteLine("{0}\t{1}", dr[5], dr[7]);
-
+                Console.Write("{0}\t\t|{1}\t\t|{2}\n", dr[5], dr[7],dr[8]);
+                
             }
+            Console.WriteLine("----------------------*************--------------------");
             dr.Close();
             con.Close();
         }
