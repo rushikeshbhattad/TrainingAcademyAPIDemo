@@ -24,14 +24,15 @@ namespace TrainingAcademyAPIDemo
             int Student_Marks;
             int rollno;
             Connection1.CreateConnection();
-            Console.WriteLine("Connection with database Successful");
-            Console.WriteLine("Training_Academy");
+            Console.WriteLine("            To                      ");
+            Console.WriteLine("        Training Academy            ");
             Console.WriteLine();
             Console.ReadKey();
 
 
             do
             {
+
 
 
                 Console.WriteLine("Press 1 For Display Data");
@@ -44,6 +45,7 @@ namespace TrainingAcademyAPIDemo
 
                 int ch = Convert.ToInt32(Console.ReadLine());
 
+           
                 switch (ch)
                 {
                     case 1:

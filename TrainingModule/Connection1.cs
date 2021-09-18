@@ -16,7 +16,7 @@ namespace TrainingModule
 
             con = new SqlConnection();
             con.ConnectionString = constr;
-            Console.WriteLine("Connection Successful");
+            Console.WriteLine("          Welcome              ");
         }
 
         public static void InsertData(int Student_Rollno, string StudentName, string Address1, string Gender, string Contact_No, string Course_Name, string Course_Fee, string Trainer_Name,int Student_Marks)
