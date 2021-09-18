@@ -205,8 +205,8 @@ namespace TrainingAcademyAPIDemo
                         break;
 
                     case 6:
-                        Console.WriteLine("-----------Display Top Student Trainer and Course_Name--------------");
-                        Console.WriteLine("Top Student Trainer and Course_Name");
+                        Console.WriteLine("-----------Display Top Student Trainer and Course Name--------------");
+                        Console.WriteLine("Top Student Trainer and Course Name");
                         Connection1.DisplayAverage();
                         break;
 

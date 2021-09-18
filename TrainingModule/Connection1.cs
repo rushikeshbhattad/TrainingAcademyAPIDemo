@@ -69,7 +69,7 @@ namespace TrainingModule
             cmd.Parameters.Add(new SqlParameter("marks", y));
 
             int r = cmd.ExecuteNonQuery();
-            Console.WriteLine("{0} rows affected", r);
+            Console.WriteLine("{0} Record Successfully Update", r);
             con.Close();
 
         }
@@ -81,7 +81,7 @@ namespace TrainingModule
             cmd.Parameters.Add(new SqlParameter("rn",y));
             int r = cmd.ExecuteNonQuery();
 
-            Console.WriteLine("{0} rows affected", r);
+            Console.WriteLine("{0} Record Successfully Deleted ", r);
             con.Close();
         }
 
@@ -91,18 +91,14 @@ namespace TrainingModule
             string query = "SELECT Top 5 * From StudentDetails ORDER BY Student_Marks DESC ";
             cmd = new SqlCommand(query, con);
             dr = cmd.ExecuteReader();
-            Console.WriteLine("Student_Rollno \t StudentName \t Address \t Gender \t Contact_No \t Course_Name \t Course_Fee \t Trainer_Name \t Student_Marks ");
+            Console.Write("Roll no | Student Name |Course Name | Trainer Name | Marks \n");
             while (dr.Read())
             {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], dr[7], dr[8]);
+                Console.Write("{0}\t|{1}\t\t|{2}\t\t{3}\t{4}\n",dr[0],dr[1],dr[5], dr[7], dr[8]);
 
             }
+            Console.WriteLine("----------------------*************--------------------");
             dr.Close();
-            string cmdcount = "Select count(*) from StudentDetails ";
-            cmd = new SqlCommand(cmdcount, con);
-            int count = (int)cmd.ExecuteScalar();
-            Console.WriteLine("{0} Records in the table", count);
-            Console.ReadKey();
             con.Close();
         }
 
