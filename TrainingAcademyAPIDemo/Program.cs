@@ -27,17 +27,19 @@ namespace TrainingAcademyAPIDemo
             string option;
             Connection1.CreateConnection();
 
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("            To                      ");
             Console.WriteLine("        Training Academy            ");
             Console.WriteLine();
+          
             Console.ReadKey();
-
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
 
             do
             {
 
 
-
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Press 1 For Display Data");
                 Console.WriteLine("Press 2 For Insert Data");
                 Console.WriteLine("Press 3 For Update Data");
@@ -57,6 +59,7 @@ namespace TrainingAcademyAPIDemo
                         break;
 
                     case 2:
+                        Console.ForegroundColor = ConsoleColor.Magenta;
                         Console.WriteLine("Enter your Details");
                         Console.WriteLine("--------------Insert Student Details--------------");
 
@@ -188,6 +191,7 @@ namespace TrainingAcademyAPIDemo
                         break;
 
                     case 3:
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("--------Update Details--------------");
                         Console.WriteLine("enter rollno");
                         rollno = Convert.ToInt32(Console.ReadLine());
@@ -197,6 +201,7 @@ namespace TrainingAcademyAPIDemo
                         break;
 
                     case 4:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("--------Delete Student Rollno--------------");
                         Console.WriteLine("Enter the Rollno you want to delete");
                         Student_Rollno = Convert.ToInt32(Console.ReadLine());
@@ -204,12 +209,14 @@ namespace TrainingAcademyAPIDemo
                         break;
 
                     case 5:
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("-----------Display Top 5--------------");
                         Console.WriteLine("Display Top5 StudentData");
                         Connection1.DisplayTop5();
                         break;
 
                     case 6:
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
                         Console.WriteLine("-----------Display Top Student Trainer and Course Name--------------");
                         Console.WriteLine("Top Student Trainer and Course Name");
                         Connection1.DisplayAverage();
