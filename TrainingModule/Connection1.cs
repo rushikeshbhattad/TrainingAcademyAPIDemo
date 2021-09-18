@@ -28,7 +28,7 @@ namespace TrainingModule
             cmd = new SqlCommand(query, con);
 
             int r = cmd.ExecuteNonQuery();
-            Console.WriteLine("{0} of rows affected", r);
+            Console.WriteLine("{0} One Record Inserted Successfully", r);
             con.Close();
 
         }
@@ -39,23 +39,20 @@ namespace TrainingModule
             string query = "Select * from StudentDetails";
             cmd = new SqlCommand(query, con);
             dr = cmd.ExecuteReader();
-            Console.WriteLine("Student_Rollno\t\t\t\t\t\t ||||||||||||StudentName\t\t\t\t\t\t |||||||||Address\t\t\t\t\t Gender \t\t\t Contact_No \t\t\t\t\t\t Course_Name \t\t\t\t\t\t Course_Fee \t\t\t\t\t\t Trainer_Name \t\t\t\t\t\t Student_Marks");
+            Console.WriteLine("Rollno | StudentName | Address | Gender | Contact No | Course Name | Course Fee | Trainer Name | Student Marks");
            
-
-
-
-
-
             while (dr.Read())
             {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], dr[7], dr[8]);
+                Console.WriteLine("{0}\t{1}\t{2}\t\t{3}\t{4}\t{5}\t\t{6}\t\t{7}\t\t{8}", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], dr[7], dr[8]);
                 
             }
             dr.Close();
             string cmdcount = "Select count(*) from StudentDetails ";
             cmd = new SqlCommand(cmdcount, con);
             int count = (int)cmd.ExecuteScalar();
-            Console.WriteLine("{0} Records in the table", count);
+
+            Console.WriteLine("Successfully Display Records in the table", count);
+            
             Console.ReadKey();
             con.Close();
         }
@@ -70,6 +67,7 @@ namespace TrainingModule
 
             int r = cmd.ExecuteNonQuery();
             Console.WriteLine("{0} Record Successfully Update", r);
+            Console.WriteLine("---------------************--------------------");
             con.Close();
 
         }
@@ -82,6 +80,7 @@ namespace TrainingModule
             int r = cmd.ExecuteNonQuery();
 
             Console.WriteLine("{0} Record Successfully Deleted ", r);
+            Console.WriteLine("---------------************--------------------");
             con.Close();
         }
 

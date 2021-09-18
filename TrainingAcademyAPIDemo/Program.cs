@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using TrainingModule;
+using System.Threading;
 
 namespace TrainingAcademyAPIDemo
 {
@@ -23,7 +24,9 @@ namespace TrainingAcademyAPIDemo
             String Trainer_Name;
             int Student_Marks;
             int rollno;
+            string option;
             Connection1.CreateConnection();
+
             Console.WriteLine("            To                      ");
             Console.WriteLine("        Training Academy            ");
             Console.WriteLine();
@@ -41,11 +44,11 @@ namespace TrainingAcademyAPIDemo
                 Console.WriteLine("Press 4 For Delete Data");
                 Console.WriteLine("Press 5 For Display Top 5 Student Data");
                 Console.WriteLine("Press 6 For Display Top 5 Course Name and Trainer Name Data");
-                Console.WriteLine("Press 7 for exit");
+                
 
                 int ch = Convert.ToInt32(Console.ReadLine());
 
-           
+
                 switch (ch)
                 {
                     case 1:
@@ -56,25 +59,25 @@ namespace TrainingAcademyAPIDemo
                     case 2:
                         Console.WriteLine("Enter your Details");
                         Console.WriteLine("--------------Insert Student Details--------------");
-                        
+
                         Console.WriteLine("Enter the Rollno");
                         Student_Rollno = Convert.ToInt32(Console.ReadLine());
 
 
-                        
-                         
+
+
                         Console.WriteLine("enter the StudentName");
                         StudentName = Console.ReadLine();
 
-                            while (String.IsNullOrEmpty(StudentName))
-                            {
-                                Console.WriteLine("please enter the student name it cannot be blank");
-                                Console.WriteLine("Enter the student name again");
-                                StudentName = Console.ReadLine();
-                            }
-                                
-                         Console.WriteLine("enter the Address");
-                         Address1 = Console.ReadLine();
+                        while (String.IsNullOrEmpty(StudentName))
+                        {
+                            Console.WriteLine("please enter the student name it cannot be blank");
+                            Console.WriteLine("Enter the student name again");
+                            StudentName = Console.ReadLine();
+                        }
+
+                        Console.WriteLine("enter the Address");
+                        Address1 = Console.ReadLine();
 
                         while (String.IsNullOrEmpty(Address1))
                         {
@@ -83,7 +86,7 @@ namespace TrainingAcademyAPIDemo
                             Address1 = Console.ReadLine();
                         }
 
-                        
+
                         Console.WriteLine("enter the Gender");
                         Gender = Console.ReadLine();
 
@@ -101,7 +104,7 @@ namespace TrainingAcademyAPIDemo
                         while (true)
                         {
                             Console.Write("Enter Contact number : ");
-                           long Cno = Convert.ToInt64(Console.ReadLine());
+                            long Cno = Convert.ToInt64(Console.ReadLine());
                             bool check = isValidContactNumber(Cno);
 
 
@@ -117,7 +120,7 @@ namespace TrainingAcademyAPIDemo
 
                         }
 
-                         bool isValidContactNumber(long inputContactNumber)
+                        bool isValidContactNumber(long inputContactNumber)
                         {
                             string strRegex = @"(^[0-9]{10}$)|(^\+[0-9]{2}\s+[0-9] {2}[0-9]{8}$)|(^[0-9]{3}-[0-9]{4}-[0-9]{4}$)";
 
@@ -163,7 +166,7 @@ namespace TrainingAcademyAPIDemo
                             Course_Fee = Console.ReadLine();
                         }
 
-                        
+
                         Console.WriteLine("enter the TrainerName");
                         Trainer_Name = Console.ReadLine();
 
@@ -179,8 +182,8 @@ namespace TrainingAcademyAPIDemo
 
 
 
-                        
-                        
+
+
                         Connection1.InsertData(Student_Rollno, StudentName, Address1, Gender, Contact_No, Course_Name, Course_Fee, Trainer_Name, Student_Marks);
                         break;
 
@@ -190,7 +193,7 @@ namespace TrainingAcademyAPIDemo
                         rollno = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("Enter the new Marks");
                         int marks = Convert.ToInt32(Console.ReadLine());
-                        Connection1.UpdateData(rollno,marks);
+                        Connection1.UpdateData(rollno, marks);
                         break;
 
                     case 4:
@@ -222,11 +225,14 @@ namespace TrainingAcademyAPIDemo
                         Console.WriteLine("Enter correct option");
                         break;
 
-
+                        
                 }
-            } while (true);
+                Console.Write("Press Yes/Y to continue: ");
+                option = Console.ReadLine();
+            } while (option=="Yes"||option=="yes" ||option=="YES" || option=="Y" || option=="y");
 
-
+            Console.WriteLine("Exiting from application");
+            Thread.Sleep(2000);
 
         }
         }
