@@ -16,7 +16,7 @@ namespace TrainingModule
 
             con = new SqlConnection();
             con.ConnectionString = constr;
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("          Welcome              ");
            
         }
